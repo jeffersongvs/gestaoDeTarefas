@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	 xmlns:h="http://java.sun.com/jsf/html"
+	 xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title> Cadastrar Tarefa</title>
+</h:head>
+
+<h:body>
+
+	<h:form id="formTarefa">
+		
+		<h:panelGrid columns="2">
+			<f:facet name="header">
+			<h:outputText value="Cadastrar Tarefa "/>
+			</f:facet>
+		<h:outputLabel value="Id: "/>
+		<h:inputText value="#{pessoaBean.pessoa.id}" readonly="true"/>
+		
+		<h:outputLabel value="Titulo: "/>
+		<h:inputText value="#{tarefaBean.tarefa.titulo}"/>
+		
+		<h:outputLabel value="Descrição: "/>
+		<h:inputText value="#{tarefaBean.tarefa.descricao}"/>
+		
+		<h:outputLabel value="Responsavel: "/>
+		<h:inputText value="#{tarefaBean.tarefa.responsavel}"/>
+		
+		<h:outputLabel value="Prioridade: "/>
+		<h:selectOneMenu id="campoPrioridade"  value="#{tarefaBean.tarefa.prioridade}" >
+			<f:selectItem itemValue="NAO" itemLabel="[ Select ]" />
+			<f:selectItem itemValue="Alta"/>
+			<f:selectItem itemValue="Media"/>
+			<f:selectItem itemValue="Baixa"/>
+		</h:selectOneMenu>
+		
+		<h:outputLabel value="Concluido "/>
+		<h:selectBooleanCheckbox value="#{tarefaBean.tarefa.concluido}"/>
+		
+		<h:outputLabel />
+		<h:panelGroup>
+		<h:commandButton value="Cadastrar" action="#{tarefaBean.cadastrar}"/>
+		<h:commandButton value="Novo" action="#{tarefaBean.novo}"/>
+		</h:panelGroup>
+		</h:panelGrid>
+		
+		<h:dataTable value="#{tarefaBean.tarefas}" var="t" border="3" cellpadding="6">
+			
+			<f:facet name="header">
+				Listagem de Tarefas
+			</f:facet>
+			
+			<h:column>
+				<f:facet name="header">Numero</f:facet>
+				<h:outputText value="#{t.id}"/>
+			</h:column>
+			
+			<h:column>
+			<f:facet name="header">Titulo</f:facet>
+				<h:outputText value="#{t.titulo}"/>
+			</h:column>
+			
+			<h:column>
+			<f:facet name="header">Responsavel</f:facet>
+				<h:outputText value="#{t.responsavel}"/>
+			</h:column>
+			
+			<h:column>
+			<f:facet name="header">Prioridade</f:facet>
+				<h:outputText value="#{t.prioridade}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Ação</f:facet>
+				<h:commandLink value="Editar  ">
+					<f:setPropertyActionListener value="#{t}" target="#{tarefaBean.tarefa}"/>
+				</h:commandLink>
+				<h:commandLink value="  Excluir" action="#{tarefaBean.deletar}">
+					<f:setPropertyActionListener value="#{t}" target="#{tarefaBean.tarefa}"/>
+				</h:commandLink>
+			</h:column>
+			
+		</h:dataTable>
+		
+	</h:form>
+
+</h:body>
+
+</html>
