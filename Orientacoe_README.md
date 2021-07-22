@@ -13,7 +13,11 @@ Declarar a lista de configurações
 		<property name="hibernate.format_sql" value="true"/>
 		<property name="hibernate.hbm2ddl.auto" value="update"/>
 	</properties>
-
+--------------------------------------------------------------------------------------------------------------
+Na tela inicial, tem o Id onde ele vai gerar um numero automatico, sem precisar colocar.
+apos digitar os dados clica em cadastrar. e depois em novo para fazer um novo cadastro.
+na listagem de tarefas tem a opição de editar ou excluir a tarefa, para trefas concluidas clicar 
+no checkBox acima.
 ---------------------------------------------------------------------------------------------------------------
 Criando um new Maven Projetc
 configurando para ser projeto web
